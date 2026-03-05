@@ -42,6 +42,12 @@ app.post("/players", (req, res) => {
   );
 });
 
+// Delete Player
+app.delete("/players/:id", (req, res) => {
+  db.run("DELETE FROM players WHERE id = ?", req.params.id);
+  res.json({ success: true });
+});
+
 app.listen(3000, () => {
   console.log("Server running on port 3000");
 });
